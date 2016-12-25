@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42C828A040D963F2BE9CE5F1 /* Pods_Pippip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04164370A78B15AED1D1EA6E /* Pods_Pippip.framework */; };
+		8C268E72026CF946BB78A612 /* Pods_PippipUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDCCE65B92297B113F4AC72A /* Pods_PippipUITests.framework */; };
+		A84D05F72E5F4BB24C0DA169 /* Pods_PippipTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D2646C0E5BB73F5B899872 /* Pods_PippipTests.framework */; };
+		DD0561711E100CBF0037B29B /* SingInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0561701E100CBF0037B29B /* SingInViewController.swift */; };
 		DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */; };
 		DD159A411E0FC3AC0045F71B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A401E0FC3AC0045F71B /* ViewController.swift */; };
 		DD159A441E0FC3AC0045F71B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD159A421E0FC3AC0045F71B /* Main.storyboard */; };
@@ -15,6 +19,7 @@
 		DD159A4C1E0FC3AC0045F71B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD159A4A1E0FC3AC0045F71B /* LaunchScreen.storyboard */; };
 		DD159A571E0FC3AC0045F71B /* PippipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A561E0FC3AC0045F71B /* PippipTests.swift */; };
 		DD159A621E0FC3AC0045F71B /* PippipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A611E0FC3AC0045F71B /* PippipUITests.swift */; };
+		DD159A701E0FC40A0045F71B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04164370A78B15AED1D1EA6E /* Pods_Pippip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pippip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D2646C0E5BB73F5B899872 /* Pods_PippipTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PippipTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		576897C1705CDBC153791598 /* Pods-Pippip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pippip.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pippip/Pods-Pippip.release.xcconfig"; sourceTree = "<group>"; };
+		5B599649C5E8DBC6C26F63A0 /* Pods-PippipTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PippipTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PippipTests/Pods-PippipTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76F37B21D49D80FB3DA9C0D1 /* Pods-PippipUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PippipUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PippipUITests/Pods-PippipUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F487989D45DEA73EBA07FA0 /* Pods-PippipTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PippipTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PippipTests/Pods-PippipTests.release.xcconfig"; sourceTree = "<group>"; };
+		B277DB900042FDBE80E59DEA /* Pods-Pippip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pippip.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pippip/Pods-Pippip.debug.xcconfig"; sourceTree = "<group>"; };
+		BDCCE65B92297B113F4AC72A /* Pods_PippipUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PippipUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F845B9FE47A5D4F7233771 /* Pods-PippipUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PippipUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PippipUITests/Pods-PippipUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DD0561701E100CBF0037B29B /* SingInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingInViewController.swift; sourceTree = "<group>"; };
+		DD0561721E101D870037B29B /* Pippip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pippip.entitlements; sourceTree = "<group>"; };
 		DD159A3B1E0FC3AC0045F71B /* Pippip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pippip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD159A401E0FC3AC0045F71B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +65,7 @@
 		DD159A5D1E0FC3AC0045F71B /* PippipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PippipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD159A611E0FC3AC0045F71B /* PippipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PippipUITests.swift; sourceTree = "<group>"; };
 		DD159A631E0FC3AC0045F71B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C828A040D963F2BE9CE5F1 /* Pods_Pippip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84D05F72E5F4BB24C0DA169 /* Pods_PippipTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +89,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C268E72026CF946BB78A612 /* Pods_PippipUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3E87A040A635289B481435C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B277DB900042FDBE80E59DEA /* Pods-Pippip.debug.xcconfig */,
+				576897C1705CDBC153791598 /* Pods-Pippip.release.xcconfig */,
+				5B599649C5E8DBC6C26F63A0 /* Pods-PippipTests.debug.xcconfig */,
+				7F487989D45DEA73EBA07FA0 /* Pods-PippipTests.release.xcconfig */,
+				76F37B21D49D80FB3DA9C0D1 /* Pods-PippipUITests.debug.xcconfig */,
+				D4F845B9FE47A5D4F7233771 /* Pods-PippipUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB886E89D0A7EB5EB21043E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04164370A78B15AED1D1EA6E /* Pods_Pippip.framework */,
+				50D2646C0E5BB73F5B899872 /* Pods_PippipTests.framework */,
+				BDCCE65B92297B113F4AC72A /* Pods_PippipUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DD159A321E0FC3AC0045F71B = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +126,8 @@
 				DD159A551E0FC3AC0045F71B /* PippipTests */,
 				DD159A601E0FC3AC0045F71B /* PippipUITests */,
 				DD159A3C1E0FC3AC0045F71B /* Products */,
+				A3E87A040A635289B481435C /* Pods */,
+				BB886E89D0A7EB5EB21043E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +144,16 @@
 		DD159A3D1E0FC3AC0045F71B /* Pippip */ = {
 			isa = PBXGroup;
 			children = (
+				DD0561721E101D870037B29B /* Pippip.entitlements */,
 				DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */,
 				DD159A401E0FC3AC0045F71B /* ViewController.swift */,
 				DD159A421E0FC3AC0045F71B /* Main.storyboard */,
+				DD0561701E100CBF0037B29B /* SingInViewController.swift */,
 				DD159A481E0FC3AC0045F71B /* Assets.xcassets */,
 				DD159A4A1E0FC3AC0045F71B /* LaunchScreen.storyboard */,
 				DD159A4D1E0FC3AC0045F71B /* Info.plist */,
 				DD159A451E0FC3AC0045F71B /* Pippip.xcdatamodeld */,
+				DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */,
 			);
 			path = Pippip;
 			sourceTree = "<group>";
@@ -135,9 +183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD159A661E0FC3AC0045F71B /* Build configuration list for PBXNativeTarget "Pippip" */;
 			buildPhases = (
+				42EB3E08742ECC8E79FBACB0 /* [CP] Check Pods Manifest.lock */,
 				DD159A371E0FC3AC0045F71B /* Sources */,
 				DD159A381E0FC3AC0045F71B /* Frameworks */,
 				DD159A391E0FC3AC0045F71B /* Resources */,
+				CCDDCC13AA1269FF7B0033B8 /* [CP] Embed Pods Frameworks */,
+				38CFF91775A840FAC49C4852 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +203,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD159A691E0FC3AC0045F71B /* Build configuration list for PBXNativeTarget "PippipTests" */;
 			buildPhases = (
+				3657E36DC0D972784F18CBF4 /* [CP] Check Pods Manifest.lock */,
 				DD159A4E1E0FC3AC0045F71B /* Sources */,
 				DD159A4F1E0FC3AC0045F71B /* Frameworks */,
 				DD159A501E0FC3AC0045F71B /* Resources */,
+				4367FB05D16B4FC0155B38FC /* [CP] Embed Pods Frameworks */,
+				6EFDCC4AE376769127FE2477 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD159A6C1E0FC3AC0045F71B /* Build configuration list for PBXNativeTarget "PippipUITests" */;
 			buildPhases = (
+				24056A0938B27E1D661F515B /* [CP] Check Pods Manifest.lock */,
 				DD159A591E0FC3AC0045F71B /* Sources */,
 				DD159A5A1E0FC3AC0045F71B /* Frameworks */,
 				DD159A5B1E0FC3AC0045F71B /* Resources */,
+				55D02E8C04057BF602E3BC37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,7 +252,13 @@
 				TargetAttributes = {
 					DD159A3A1E0FC3AC0045F71B = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = H964R4X2Q3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					DD159A511E0FC3AC0045F71B = {
 						CreatedOnToolsVersion = 8.0;
@@ -236,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD159A4C1E0FC3AC0045F71B /* LaunchScreen.storyboard in Resources */,
+				DD159A701E0FC40A0045F71B /* GoogleService-Info.plist in Resources */,
 				DD159A491E0FC3AC0045F71B /* Assets.xcassets in Resources */,
 				DD159A441E0FC3AC0045F71B /* Main.storyboard in Resources */,
 			);
@@ -257,11 +320,135 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24056A0938B27E1D661F515B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3657E36DC0D972784F18CBF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		38CFF91775A840FAC49C4852 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pippip/Pods-Pippip-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42EB3E08742ECC8E79FBACB0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4367FB05D16B4FC0155B38FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PippipTests/Pods-PippipTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55D02E8C04057BF602E3BC37 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PippipUITests/Pods-PippipUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EFDCC4AE376769127FE2477 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PippipTests/Pods-PippipTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCDDCC13AA1269FF7B0033B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pippip/Pods-Pippip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DD159A371E0FC3AC0045F71B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD0561711E100CBF0037B29B /* SingInViewController.swift in Sources */,
 				DD159A411E0FC3AC0045F71B /* ViewController.swift in Sources */,
 				DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */,
 				DD159A471E0FC3AC0045F71B /* Pippip.xcdatamodeld in Sources */,
@@ -414,11 +601,14 @@
 		};
 		DD159A671E0FC3AC0045F71B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B277DB900042FDBE80E59DEA /* Pods-Pippip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pippip/Pippip.entitlements;
+				DEVELOPMENT_TEAM = H964R4X2Q3;
 				INFOPLIST_FILE = Pippip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.0.Pippip";
+				PRODUCT_BUNDLE_IDENTIFIER = com.NSC.Pippip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -426,11 +616,14 @@
 		};
 		DD159A681E0FC3AC0045F71B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 576897C1705CDBC153791598 /* Pods-Pippip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pippip/Pippip.entitlements;
+				DEVELOPMENT_TEAM = H964R4X2Q3;
 				INFOPLIST_FILE = Pippip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.0.Pippip";
+				PRODUCT_BUNDLE_IDENTIFIER = com.NSC.Pippip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -438,6 +631,7 @@
 		};
 		DD159A6A1E0FC3AC0045F71B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B599649C5E8DBC6C26F63A0 /* Pods-PippipTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -452,6 +646,7 @@
 		};
 		DD159A6B1E0FC3AC0045F71B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F487989D45DEA73EBA07FA0 /* Pods-PippipTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -466,6 +661,7 @@
 		};
 		DD159A6D1E0FC3AC0045F71B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76F37B21D49D80FB3DA9C0D1 /* Pods-PippipUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = PippipUITests/Info.plist;
@@ -479,6 +675,7 @@
 		};
 		DD159A6E1E0FC3AC0045F71B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4F845B9FE47A5D4F7233771 /* Pods-PippipUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = PippipUITests/Info.plist;
@@ -509,6 +706,7 @@
 				DD159A681E0FC3AC0045F71B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD159A691E0FC3AC0045F71B /* Build configuration list for PBXNativeTarget "PippipTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +715,7 @@
 				DD159A6B1E0FC3AC0045F71B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD159A6C1E0FC3AC0045F71B /* Build configuration list for PBXNativeTarget "PippipUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +724,7 @@
 				DD159A6E1E0FC3AC0045F71B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
