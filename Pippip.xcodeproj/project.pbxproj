@@ -20,6 +20,7 @@
 		DD159A571E0FC3AC0045F71B /* PippipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A561E0FC3AC0045F71B /* PippipTests.swift */; };
 		DD159A621E0FC3AC0045F71B /* PippipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A611E0FC3AC0045F71B /* PippipUITests.swift */; };
 		DD159A701E0FC40A0045F71B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */; };
+		DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A121C1E1553D8005A70A8 /* SingUpController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		DD159A611E0FC3AC0045F71B /* PippipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PippipUITests.swift; sourceTree = "<group>"; };
 		DD159A631E0FC3AC0045F71B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD5A121C1E1553D8005A70A8 /* SingUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */,
 				DD159A401E0FC3AC0045F71B /* ViewController.swift */,
 				DD159A421E0FC3AC0045F71B /* Main.storyboard */,
+				DD5A121C1E1553D8005A70A8 /* SingUpController.swift */,
 				DD0561701E100CBF0037B29B /* SingInViewController.swift */,
 				DD159A481E0FC3AC0045F71B /* Assets.xcassets */,
 				DD159A4A1E0FC3AC0045F71B /* LaunchScreen.storyboard */,
@@ -229,6 +232,7 @@
 				DD159A5A1E0FC3AC0045F71B /* Frameworks */,
 				DD159A5B1E0FC3AC0045F71B /* Resources */,
 				55D02E8C04057BF602E3BC37 /* [CP] Copy Pods Resources */,
+				3F914FF387A637E05B8183F1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,7 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3657E36DC0D972784F18CBF4 /* [CP] Check Pods Manifest.lock */ = {
@@ -348,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		38CFF91775A840FAC49C4852 /* [CP] Copy Pods Resources */ = {
@@ -366,6 +370,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pippip/Pods-Pippip-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3F914FF387A637E05B8183F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PippipUITests/Pods-PippipUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		42EB3E08742ECC8E79FBACB0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,7 +397,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4367FB05D16B4FC0155B38FC /* [CP] Embed Pods Frameworks */ = {
@@ -450,6 +469,7 @@
 			files = (
 				DD0561711E100CBF0037B29B /* SingInViewController.swift in Sources */,
 				DD159A411E0FC3AC0045F71B /* ViewController.swift in Sources */,
+				DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */,
 				DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */,
 				DD159A471E0FC3AC0045F71B /* Pippip.xcdatamodeld in Sources */,
 			);

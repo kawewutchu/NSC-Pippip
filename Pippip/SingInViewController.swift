@@ -34,43 +34,7 @@ class SingInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func singupAction(_ sender: AnyObject) {
-        if self.usernameTextField.text == "" || self.passwordTextField.text == ""{
-            
-            let alert = UIAlertController(title: "Oops!",
-                                          message: "plase enter username oand password",
-                                          preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,
-                                          handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        else{
-            
-            FIRAuth.auth()?.createUser(withEmail: self.usernameTextField.text! ,
-                                       password: self.passwordTextField.text!,
-                                       completion: { (user , Error) in
-                
-                if Error == nil{
-                    self.logoutButton.alpha = 1.0
-                    self.logoappLabel.text = user!.email
-                    self.usernameTextField.text = ""
-                    self.passwordTextField.text = ""
-                }
-                else{
-                    let alert = UIAlertController(title: "Oops!",
-                                                  message: Error?.localizedDescription,
-                                                  preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,
-                                                  handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-
-                }
-                
-            })
-        }
-        
-    }
-
+   
     @IBAction func singinAction(_ sender: AnyObject) {
         if self.usernameTextField.text == "" || self.passwordTextField.text == ""{
             
