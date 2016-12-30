@@ -8,7 +8,9 @@
 
 import UIKit
 import Firebase
-class SingUpController: UIViewController {
+class SingUpController: UIViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
+    
+    @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -56,31 +58,91 @@ class SingUpController: UIViewController {
                     return
                 }
                 
-                //successfully authenticated user
-                let ref = FIRDatabase.database().reference(fromURL: "https://pippip-5a92a.firebaseio.com/")
-                let usersReference = ref.child("users").child(uid)
-                let values = ["name": name, "email": email]
-                usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                let imageName = NSUUID().uuidString
+                print(imageName)
+                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).png")
+                if let uploadData = UIImagePNGRepresentation(self.userImageView.image!) {
                     
-                    if err != nil {
-                        print(err)
-                        return
-                    }
-                    
-                    let alert = UIAlertController(title: "Oops!",
-                                                  message: "sing up ok",
-                                                  preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,
-                                                  handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    
+                    storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                        
+                        if error != nil {
+                            print(error)
+                            return
+                        }
+                        
+                        if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                            
+                            let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
+                            
+                            self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                            
+                            let alert = UIAlertController(title: "Oops!",
+                                                          message: "Sing up ok",
+                                                          preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,
+                                                          handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    })
+                }
 
-                })
            
             })
         }
         
     }
+    
+    fileprivate func registerUserIntoDatabaseWithUID(_ uid: String, values: [String: AnyObject]) {
+        let ref = FIRDatabase.database().reference(fromURL: "https://pippip-5a92a.firebaseio.com/")
+        let usersReference = ref.child("users").child(uid)
+        
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            
+            if err != nil {
+                print(err)
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        })
+    }
+    
+  
+    @IBAction func changeImage(_ sender: Any) {
+        let picker = UIImagePickerController()
+        
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        present(picker, animated: true, completion: nil)
+
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            userImageView.image = selectedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("canceled picker")
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     /*
     // MARK: - Navigation
