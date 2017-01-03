@@ -9,6 +9,7 @@ target 'Pippip' do
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Firebase/Auth'
+pod 'JSQMessagesViewController'
   target 'PippipTests' do
     inherit! :search_paths
     # Pods for testing

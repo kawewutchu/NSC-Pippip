@@ -21,6 +21,7 @@
 		DD159A621E0FC3AC0045F71B /* PippipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A611E0FC3AC0045F71B /* PippipUITests.swift */; };
 		DD159A701E0FC40A0045F71B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */; };
 		DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A121C1E1553D8005A70A8 /* SingUpController.swift */; };
+		DD76493E1E1805C6007BFF56 /* chatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76493D1E1805C6007BFF56 /* chatController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		DD159A631E0FC3AC0045F71B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD5A121C1E1553D8005A70A8 /* SingUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpController.swift; sourceTree = "<group>"; };
+		DD76493D1E1805C6007BFF56 /* chatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				DD159A4D1E0FC3AC0045F71B /* Info.plist */,
 				DD159A451E0FC3AC0045F71B /* Pippip.xcdatamodeld */,
 				DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */,
+				DD76493D1E1805C6007BFF56 /* chatController.swift */,
 			);
 			path = Pippip;
 			sourceTree = "<group>";
@@ -256,7 +259,7 @@
 				TargetAttributes = {
 					DD159A3A1E0FC3AC0045F71B = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = H964R4X2Q3;
+						DevelopmentTeam = 66LXTJRV3F;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -472,6 +475,7 @@
 				DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */,
 				DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */,
 				DD159A471E0FC3AC0045F71B /* Pippip.xcdatamodeld in Sources */,
+				DD76493E1E1805C6007BFF56 /* chatController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pippip/Pippip.entitlements;
-				DEVELOPMENT_TEAM = H964R4X2Q3;
+				DEVELOPMENT_TEAM = 66LXTJRV3F;
 				INFOPLIST_FILE = Pippip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NSC.Pippip;
@@ -640,7 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pippip/Pippip.entitlements;
-				DEVELOPMENT_TEAM = H964R4X2Q3;
+				DEVELOPMENT_TEAM = 66LXTJRV3F;
 				INFOPLIST_FILE = Pippip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NSC.Pippip;
