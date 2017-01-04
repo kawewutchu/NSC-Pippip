@@ -13,7 +13,7 @@ import MobileCoreServices
 import AVKit
 import AVFoundation
 class chatController: JSQMessagesViewController {
- 
+    var userChat = User()
     var massage = [JSQMessage]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,11 @@ class chatController: JSQMessagesViewController {
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         print(text)
+        let ref = FIRDatabase.database().reference().child("message")
+        let refchild = ref.childByAutoId()
+        print(text)
+        let values = ["text": text]
+        refchild.updateChildValues(values)
         collectionView.reloadData()
         massage.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
     }
