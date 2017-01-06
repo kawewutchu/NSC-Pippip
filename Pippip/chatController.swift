@@ -16,27 +16,123 @@ class chatController: JSQMessagesViewController {
     var userChat = User()
     var massage = [JSQMessage]()
     override func viewDidLoad() {
+        massage.removeAll()
         super.viewDidLoad()
-        self.senderId = "1"
+        self.senderId = FIRAuth.auth()!.currentUser!.uid
         self.senderDisplayName = "jarb"
-        // Do any additional setup after loading the view.
+        navigationItem.title = userChat.name
+        collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
+        collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
+        observeMessages()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
    
+    var messages = [Message]()
     
+    func observeMessages() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        self.senderId = uid
+        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(uid)
+        userMessagesRef.observe(.childAdded, with: { (snapshot) in
+            
+            let messageId = snapshot.key
+            let messagesRef = FIRDatabase.database().reference().child("messages").child(messageId)
+            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let dictionary = snapshot.value as? [String: AnyObject] else {
+                    return
+                }
+                
+                let message = Message()
+                message.setValuesForKeys(dictionary)
+            
+                var chatPartnerId =  message.chatPartnerId()
+                if chatPartnerId == self.userChat.id {
+                   self.messages.append(message)
+                   let text = message.text
+                    if(self.senderId == message.fromId){
+                        print(message.fromId)
+                        self.massage.append(JSQMessage(senderId: message.fromId, displayName: "1", text: text))
+                    }else{
+                        print(message.fromId)
+                        self.massage.append(JSQMessage(senderId: message.fromId, displayName: "1", text: text))
+                    }
+                    
+                    DispatchQueue.main.async{
+                        self.collectionView.reloadData()
+                    }
+                }
+                
+            }, withCancel: nil)
+            
+        }, withCancel: nil)
+    }
+    
+    
+    private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
+        let bubbleImageFactory = JSQMessagesBubbleImageFactory()
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+    }
+    
+    private func setupIncomingBubble() -> JSQMessagesBubbleImage {
+        let bubbleImageFactory = JSQMessagesBubbleImageFactory()
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+    }
+    
+    
+    lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
+    lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let message = massage[indexPath.item] // 1
+        print(message.senderId)
+        print(senderId)
+        if message.senderId == senderId { // 2
+            return outgoingBubbleImageView
+        } else { // 3
+            return incomingBubbleImageView
+        }
+    }
+    
+    func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource? {
+        return nil
+    }
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         print(text)
-        let ref = FIRDatabase.database().reference().child("message")
-        let refchild = ref.childByAutoId()
-        print(text)
-        let values = ["text": text]
-        refchild.updateChildValues(values)
+        
+        let ref = FIRDatabase.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let toId = userChat.id
+        let fromId = FIRAuth.auth()!.currentUser!.uid
+        let timestamp = Int(Date().timeIntervalSince1970)
+        let values = ["text": text, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
+        //childRef.updateChildValues(values)
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
+            
+            let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId!)
+            recipientUserMessagesRef.updateChildValues([messageId: 1])
+            
+        
+        }
+
         collectionView.reloadData()
-        massage.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
+        
+        
+        //massage.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -64,16 +160,15 @@ class chatController: JSQMessagesViewController {
         MediaPicker.delegate = self
         MediaPicker.mediaTypes = [type as String]
         self.present(MediaPicker, animated: true, completion: nil)
-        print("kuy")
     }
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return massage[indexPath.item]
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let bubble = JSQMessagesBubbleImageFactory()
-        return bubble?.outgoingMessagesBubbleImage(with: .blue)
-    }
+//    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+//        let bubble = JSQMessagesBubbleImageFactory()
+//        return bubble?.outgoingMessagesBubbleImage(with: .blue)
+//    }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil

@@ -20,6 +20,8 @@
 		DD159A571E0FC3AC0045F71B /* PippipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A561E0FC3AC0045F71B /* PippipTests.swift */; };
 		DD159A621E0FC3AC0045F71B /* PippipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD159A611E0FC3AC0045F71B /* PippipUITests.swift */; };
 		DD159A701E0FC40A0045F71B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */; };
+		DD1A01CC1E1E26A900F4A303 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A01CB1E1E26A900F4A303 /* Message.swift */; };
+		DD1A01CE1E1E3B8300F4A303 /* roomChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */; };
 		DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A121C1E1553D8005A70A8 /* SingUpController.swift */; };
 		DD76493E1E1805C6007BFF56 /* chatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76493D1E1805C6007BFF56 /* chatController.swift */; };
 		DD9ECA931E1CF01100673F5B /* roomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ECA921E1CF01100673F5B /* roomCell.swift */; };
@@ -72,6 +74,8 @@
 		DD159A611E0FC3AC0045F71B /* PippipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PippipUITests.swift; sourceTree = "<group>"; };
 		DD159A631E0FC3AC0045F71B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD1A01CB1E1E26A900F4A303 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roomChatController.swift; sourceTree = "<group>"; };
 		DD5A121C1E1553D8005A70A8 /* SingUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpController.swift; sourceTree = "<group>"; };
 		DD76493D1E1805C6007BFF56 /* chatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatController.swift; sourceTree = "<group>"; };
 		DD9ECA921E1CF01100673F5B /* roomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roomCell.swift; sourceTree = "<group>"; };
@@ -156,22 +160,18 @@
 		DD159A3D1E0FC3AC0045F71B /* Pippip */ = {
 			isa = PBXGroup;
 			children = (
+				DD1A01C81E1E260000F4A303 /* Helpers */,
+				DD1A01C61E1E25CB00F4A303 /* Model */,
+				DD1A01C71E1E25DE00F4A303 /* Controller */,
 				DD0561721E101D870037B29B /* Pippip.entitlements */,
 				DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */,
 				DD159A401E0FC3AC0045F71B /* ViewController.swift */,
 				DD159A421E0FC3AC0045F71B /* Main.storyboard */,
-				DD5A121C1E1553D8005A70A8 /* SingUpController.swift */,
-				DD0561701E100CBF0037B29B /* SingInViewController.swift */,
 				DD159A481E0FC3AC0045F71B /* Assets.xcassets */,
 				DD159A4A1E0FC3AC0045F71B /* LaunchScreen.storyboard */,
 				DD159A4D1E0FC3AC0045F71B /* Info.plist */,
 				DD159A451E0FC3AC0045F71B /* Pippip.xcdatamodeld */,
 				DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */,
-				DD9ECA961E1CF26000673F5B /* User.swift */,
-				DD9ECA9A1E1CF41200673F5B /* Extensions.swift */,
-				DD9ECA941E1CF04900673F5B /* chatRoomController.swift */,
-				DD76493D1E1805C6007BFF56 /* chatController.swift */,
-				DD9ECA921E1CF01100673F5B /* roomCell.swift */,
 			);
 			path = Pippip;
 			sourceTree = "<group>";
@@ -192,6 +192,36 @@
 				DD159A631E0FC3AC0045F71B /* Info.plist */,
 			);
 			path = PippipUITests;
+			sourceTree = "<group>";
+		};
+		DD1A01C61E1E25CB00F4A303 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD9ECA961E1CF26000673F5B /* User.swift */,
+				DD1A01CB1E1E26A900F4A303 /* Message.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DD1A01C71E1E25DE00F4A303 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DD9ECA941E1CF04900673F5B /* chatRoomController.swift */,
+				DD76493D1E1805C6007BFF56 /* chatController.swift */,
+				DD5A121C1E1553D8005A70A8 /* SingUpController.swift */,
+				DD0561701E100CBF0037B29B /* SingInViewController.swift */,
+				DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DD1A01C81E1E260000F4A303 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DD9ECA921E1CF01100673F5B /* roomCell.swift */,
+				DD9ECA9A1E1CF41200673F5B /* Extensions.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,12 +512,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1A01CE1E1E3B8300F4A303 /* roomChatController.swift in Sources */,
 				DD0561711E100CBF0037B29B /* SingInViewController.swift in Sources */,
 				DD159A411E0FC3AC0045F71B /* ViewController.swift in Sources */,
 				DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */,
 				DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */,
 				DD9ECA951E1CF04900673F5B /* chatRoomController.swift in Sources */,
 				DD9ECA9B1E1CF41200673F5B /* Extensions.swift in Sources */,
+				DD1A01CC1E1E26A900F4A303 /* Message.swift in Sources */,
 				DD9ECA971E1CF26000673F5B /* User.swift in Sources */,
 				DD9ECA931E1CF01100673F5B /* roomCell.swift in Sources */,
 				DD159A471E0FC3AC0045F71B /* Pippip.xcdatamodeld in Sources */,

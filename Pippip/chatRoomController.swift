@@ -28,6 +28,7 @@ class chatRoomController: UITableViewController {
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = User()
+                user.id = snapshot.key
                 user.setValuesForKeys(dictionary)
                 self.users.append(user)
                 
