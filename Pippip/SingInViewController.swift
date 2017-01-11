@@ -11,20 +11,17 @@ import Firebase
 class SingInViewController: UIViewController {
 
     
-    @IBOutlet weak var logoappLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var logoutButton: UIButton!
+    //@IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let user = FIRAuth.auth()?.currentUser{
-            self.logoutButton.alpha = 1.0
-            self.logoappLabel.text = user.email
+            print(user)
         }
         else{
-            self.logoutButton.alpha = 0.0
-            self.logoappLabel.text = ""
+            
         }
     }
 
@@ -51,8 +48,7 @@ class SingInViewController: UIViewController {
                                    completion: { (user , Error) in
                                     
                                     if Error == nil{
-                                        self.logoutButton.alpha = 1.0
-                                        self.logoappLabel.text = user!.email
+                                                                            
                                         self.usernameTextField.text = ""
                                         self.passwordTextField.text = ""
                                     }
@@ -72,14 +68,14 @@ class SingInViewController: UIViewController {
     }
 
     
-    @IBAction func logoutAction(_ sender: AnyObject) {
-        try! FIRAuth.auth()?.signOut()
-        self.logoappLabel.text = ""
-        self.logoutButton.alpha = 0.0
-        self.usernameTextField.text = ""
-        self.passwordTextField.text = ""
-        
-    }
+//    @IBAction func logoutAction(_ sender: AnyObject) {
+//        try! FIRAuth.auth()?.signOut()
+//        
+//        self.logoutButton.alpha = 0.0
+//        self.usernameTextField.text = ""
+//        self.passwordTextField.text = ""
+//        
+//    }
     /*
     // MARK: - Navigation
 

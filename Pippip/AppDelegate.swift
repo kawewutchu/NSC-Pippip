@@ -16,8 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+     
+//                let color1 = UIColor(red:52/255.0, green: 215/255.0, blue: 183/255.0, alpha: 1.0)
+//        
+//                let color2 = UIColor(red:52/255.0, green: 183/255.0, blue: 215/255.0, alpha: 1.0)
+//        
+//                let gradient = CAGradientLayer()
+//                let sizeLength = UIScreen.main.bounds.size.height * 2
+//                let defaultNavigationBarFrame = CGRect(x: 0, y: 0, width: sizeLength, height: 64)
+//                gradient.frame = defaultNavigationBarFrame
+//                gradient.colors = [color1.cgColor, color2.cgColor]
+//                //UINavigationBar.appearance().setBackgroundImage(self.image(fromLayer: gradient), for: .default)
+//        
+//                (255,159,28)
+                
         
+               let colortest = UIColor(red:255.0/255.0, green: 159.0/255.0, blue: 28/255.0, alpha: 1.0)
+                //(128,206,214)
+                UINavigationBar.appearance().barTintColor = colortest
+                //UITabBar.appearance().barTintColor = colortest
+                UINavigationBar.appearance().tintColor = UIColor.white;
+                UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         FIRApp.configure()
         
         return true

@@ -22,6 +22,8 @@
 		DD159A701E0FC40A0045F71B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */; };
 		DD1A01CC1E1E26A900F4A303 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A01CB1E1E26A900F4A303 /* Message.swift */; };
 		DD1A01CE1E1E3B8300F4A303 /* roomChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */; };
+		DD2216CD1E24656C00564F9F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2216CC1E24656C00564F9F /* TabBarController.swift */; };
+		DD2216CF1E25D09A00564F9F /* settingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2216CE1E25D09A00564F9F /* settingController.swift */; };
 		DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A121C1E1553D8005A70A8 /* SingUpController.swift */; };
 		DD76493E1E1805C6007BFF56 /* chatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76493D1E1805C6007BFF56 /* chatController.swift */; };
 		DD9ECA931E1CF01100673F5B /* roomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ECA921E1CF01100673F5B /* roomCell.swift */; };
@@ -76,6 +78,8 @@
 		DD159A6F1E0FC40A0045F71B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD1A01CB1E1E26A900F4A303 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roomChatController.swift; sourceTree = "<group>"; };
+		DD2216CC1E24656C00564F9F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DD2216CE1E25D09A00564F9F /* settingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingController.swift; sourceTree = "<group>"; };
 		DD5A121C1E1553D8005A70A8 /* SingUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpController.swift; sourceTree = "<group>"; };
 		DD76493D1E1805C6007BFF56 /* chatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatController.swift; sourceTree = "<group>"; };
 		DD9ECA921E1CF01100673F5B /* roomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roomCell.swift; sourceTree = "<group>"; };
@@ -206,11 +210,13 @@
 		DD1A01C71E1E25DE00F4A303 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD2216CC1E24656C00564F9F /* TabBarController.swift */,
 				DD9ECA941E1CF04900673F5B /* chatRoomController.swift */,
 				DD76493D1E1805C6007BFF56 /* chatController.swift */,
 				DD5A121C1E1553D8005A70A8 /* SingUpController.swift */,
 				DD0561701E100CBF0037B29B /* SingInViewController.swift */,
 				DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */,
+				DD2216CE1E25D09A00564F9F /* settingController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -513,8 +519,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD1A01CE1E1E3B8300F4A303 /* roomChatController.swift in Sources */,
+				DD2216CD1E24656C00564F9F /* TabBarController.swift in Sources */,
 				DD0561711E100CBF0037B29B /* SingInViewController.swift in Sources */,
 				DD159A411E0FC3AC0045F71B /* ViewController.swift in Sources */,
+				DD2216CF1E25D09A00564F9F /* settingController.swift in Sources */,
 				DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */,
 				DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */,
 				DD9ECA951E1CF04900673F5B /* chatRoomController.swift in Sources */,

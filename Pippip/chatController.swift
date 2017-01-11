@@ -15,6 +15,8 @@ import AVFoundation
 class chatController: JSQMessagesViewController {
     var userChat = User()
     var massage = [JSQMessage]()
+    var messageFormSendCheck = false
+    
     override func viewDidLoad() {
         massage.removeAll()
         super.viewDidLoad()
@@ -52,7 +54,7 @@ class chatController: JSQMessagesViewController {
                 message.setValuesForKeys(dictionary)
             
                 var chatPartnerId =  message.chatPartnerId()
-                if chatPartnerId == self.userChat.id {
+                if chatPartnerId == self.userChat.id && !self.messageFormSendCheck{
                    self.messages.append(message)
                    let text = message.text
                     if(self.senderId == message.fromId){
@@ -76,7 +78,7 @@ class chatController: JSQMessagesViewController {
     
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor(red:255.0/255.0, green: 159.0/255.0, blue: 28/255.0, alpha: 1.0))
     }
     
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
@@ -105,13 +107,17 @@ class chatController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         print(text)
         
+        collectionView.reloadData()
+        massage.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
+        
+        messageFormSendCheck = true
         let ref = FIRDatabase.database().reference().child("messages")
         let childRef = ref.childByAutoId()
         let toId = userChat.id
         let fromId = FIRAuth.auth()!.currentUser!.uid
         let timestamp = Int(Date().timeIntervalSince1970)
         let values = ["text": text, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
-        //childRef.updateChildValues(values)
+       
         childRef.updateChildValues(values) { (error, ref) in
             if error != nil {
                 print(error)
@@ -126,13 +132,10 @@ class chatController: JSQMessagesViewController {
             let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId!)
             recipientUserMessagesRef.updateChildValues([messageId: 1])
             
-        
         }
-
-        collectionView.reloadData()
         
         
-        //massage.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
+     
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -188,12 +191,19 @@ class chatController: JSQMessagesViewController {
                 self.present(playerController, animated: true, completion: nil)
             }
         }
+ 
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         return cell
     }
+    
+    override func scrollToBottom(animated: Bool) {
+        
+    
+    }
+
     /*
     // MARK: - Navigation
 
