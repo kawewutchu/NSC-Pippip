@@ -37,12 +37,13 @@ class settingController: UITableViewController {
         return 0
     }
 
-    @IBAction func loginPress(_ sender: Any) {
+  
+   
+    @IBAction func logoutPress(_ sender: Any) {
         try! FIRAuth.auth()?.signOut()
         self.performSegue(withIdentifier: "show", sender: self)
     }
-    
-    
+  
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

@@ -17,7 +17,10 @@ class SingUpController: UIViewController ,UIImagePickerControllerDelegate ,UINav
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
+        userImageView.layer.cornerRadius = 62.5
+        userImageView.layer.masksToBounds = true
+        userImageView.contentMode = .scaleAspectFill
         // Do any additional setup after loading the view.
     }
 

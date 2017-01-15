@@ -1,15 +1,14 @@
 //
-//  roomChatController.swift
+//  conditionRoomController.swift
 //  Pippip
 //
-//  Created by Kawewut Chujit on 1/5/2560 BE.
+//  Created by Kawewut Chujit on 1/13/2560 BE.
 //  Copyright © 2560 Kawewut Chujit. All rights reserved.
 //
 
 import UIKit
 import Firebase
-class roomChatController: UITableViewController {
-    
+class conditionRoomController: UITableViewController {
     let cellId = "cellId"
     var messages = [Message]()
     let user = User()
@@ -22,7 +21,7 @@ class roomChatController: UITableViewController {
         messagesDictionary.removeAll()
         
         observeUserMessages()
-
+        
         //observeMessages()
     }
     
@@ -31,11 +30,11 @@ class roomChatController: UITableViewController {
             return
         }
         
-        let ref = FIRDatabase.database().reference().child("user-messages").child(uid)
+        let ref = FIRDatabase.database().reference().child("user-condition").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
             
             let messageId = snapshot.key
-            let messagesReference = FIRDatabase.database().reference().child("messages").child(messageId)
+            let messagesReference = FIRDatabase.database().reference().child("condition").child(messageId)
             
             messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -66,7 +65,7 @@ class roomChatController: UITableViewController {
     
     
     func observeMessages() {
-        let ref = FIRDatabase.database().reference().child("messages")
+        let ref = FIRDatabase.database().reference().child("condition")
         ref.observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
@@ -85,15 +84,15 @@ class roomChatController: UITableViewController {
                 }
                 
                 //this will crash because of background thread, so lets call this on dispatch_async main thread
-                 DispatchQueue.main.async{
+                DispatchQueue.main.async{
                     self.tableView.reloadData()
                 }
             }
             
         }, withCancel: nil)    }
     
-  
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -108,7 +107,6 @@ class roomChatController: UITableViewController {
         cell.profileImg.layer.masksToBounds = true
         cell.profileImg.contentMode = .scaleAspectFill
         
-           
         return cell
     }
     
@@ -136,11 +134,11 @@ class roomChatController: UITableViewController {
             DispatchQueue.main.async{
                 self.performSegue(withIdentifier: "show", sender: self)
             }
-
+            
             
         }, withCancel: nil)
-
-            }
+        
+    }
     
     var indexuser = Int()
     
@@ -151,5 +149,4 @@ class roomChatController: UITableViewController {
             }
         }
     }
-
 }

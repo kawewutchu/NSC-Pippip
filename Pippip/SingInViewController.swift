@@ -18,12 +18,14 @@ class SingInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let user = FIRAuth.auth()?.currentUser{
-            print(user)
+      
         }
         else{
-            
+         
         }
     }
+    
+    
 
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +50,7 @@ class SingInViewController: UIViewController {
                                    completion: { (user , Error) in
                                     
                                     if Error == nil{
-                                                                            
+                                        self.performSegue(withIdentifier: "show", sender: self)
                                         self.usernameTextField.text = ""
                                         self.passwordTextField.text = ""
                                     }
@@ -63,11 +65,11 @@ class SingInViewController: UIViewController {
                                     }
                                     
             })
+            
+            
 
         }
     }
-
-    
 //    @IBAction func logoutAction(_ sender: AnyObject) {
 //        try! FIRAuth.auth()?.signOut()
 //        
@@ -78,12 +80,12 @@ class SingInViewController: UIViewController {
 //    }
     /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "show" {
+          
+        }
+    }
+
 
 }
