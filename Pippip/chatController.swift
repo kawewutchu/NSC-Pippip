@@ -134,6 +134,7 @@ class chatController: JSQMessagesViewController {
             
         }
         
+        self.finishSendingMessage()
         
      
     }
@@ -196,15 +197,12 @@ class chatController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        self.scrollToBottom(animated: true)
         return cell
-    }
-    
-    override func scrollToBottom(animated: Bool) {
         
-    
     }
-
-    /*
+    
+      /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

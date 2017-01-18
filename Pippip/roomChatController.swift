@@ -18,13 +18,74 @@ class roomChatController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        observeCondition()
         messages.removeAll()
         messagesDictionary.removeAll()
         
         observeUserMessages()
 
-        //observeMessages()
+      
     }
+    
+    func observeCondition() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        //self.senderId = uid
+        let userMessagesRef = FIRDatabase.database().reference().child("user-condition").child(uid)
+        userMessagesRef.observe(.childAdded, with: { (snapshot) in
+            
+            let conditionId = snapshot.key
+            let conditionRef = FIRDatabase.database().reference().child("condition").child(conditionId)
+            conditionRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let dictionary = snapshot.value as? [String: AnyObject] else {
+                    return
+                }
+                
+                let condition = Message()
+                condition.setValuesForKeys(dictionary)
+                
+                var chatPartnerId =  condition.chatPartnerId()
+                print(condition.timestamp)
+                let timestamp = Int(Date().timeIntervalSince1970)
+                if(Int(condition.timestamp!) <= timestamp){
+                    self.sentCondition(toId: condition.toId!, fromId: condition.fromId! , text: condition.text!)
+                    
+                }
+            }, withCancel: nil)
+            
+        }, withCancel: nil)
+    }
+    
+    func sentCondition(toId: String, fromId:String, text: String){
+        let ref = FIRDatabase.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let timestamp = Int(Date().timeIntervalSince1970)
+        let values = ["text": text, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
+        
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
+            
+            let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
+            recipientUserMessagesRef.updateChildValues([messageId: 1])
+            
+        }
+        
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
+
+    }
+   
     
     func observeUserMessages() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {

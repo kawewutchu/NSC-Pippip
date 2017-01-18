@@ -9,9 +9,10 @@
 import UIKit
 import CoreData
 import Firebase
-
+import GoogleMaps
+import GooglePlaces
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate  {
 
     var window: UIWindow?
     var storyboard: UIStoryboard?
@@ -31,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //                (255,159,28)
                 
+        
+        GMSPlacesClient.provideAPIKey("AIzaSyC-Irci42r76ih8LK9XdqH2xP2y7ZAzytM")
+        GMSServices.provideAPIKey("AIzaSyC-Irci42r76ih8LK9XdqH2xP2y7ZAzytM")
         
         let colortest = UIColor(red:255.0/255.0, green: 159.0/255.0, blue: 28/255.0, alpha: 1.0)
                 //(128,206,214)

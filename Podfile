@@ -10,6 +10,8 @@ pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Firebase/Auth'
 pod 'JSQMessagesViewController'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
   target 'PippipTests' do
     inherit! :search_paths
     # Pods for testing

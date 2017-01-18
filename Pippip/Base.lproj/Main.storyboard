@@ -302,7 +302,7 @@
             <objects>
                 <navigationController id="8xL-H9-oWq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="p4Q-Tg-ne4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Sa-LJ-fcU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6Sa-LJ-fcU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -341,7 +341,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ln-3z-1kZ">
-                                            <rect key="frame" x="64" y="33" width="219" height="22.5"/>
+                                            <rect key="frame" x="64" y="33" width="219" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="219" id="4yu-NQ-lAa"/>
                                             </constraints>
@@ -693,6 +693,7 @@
                     <connections>
                         <outlet property="tableView" destination="k7a-lX-Ubs" id="9sw-Jf-eGv"/>
                         <segue destination="4ha-Or-XCy" kind="show" identifier="time" id="hme-1F-KAV"/>
+                        <segue destination="hQe-Gl-W5S" kind="show" identifier="place" id="rWo-nx-j8g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nwc-bC-yod" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -739,6 +740,39 @@
             </objects>
             <point key="canvasLocation" x="5841" y="1058"/>
         </scene>
+        <!--Place Condition Controller-->
+        <scene sceneID="v2v-or-sz1">
+            <objects>
+                <viewController id="hQe-Gl-W5S" customClass="placeConditionController" customModule="Pippip" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P5D-ft-Ov0"/>
+                        <viewControllerLayoutGuide type="bottom" id="KWE-gQ-CQd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oOw-Kf-ZDV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyB-Id-o03" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VyB-Id-o03" firstAttribute="leading" secondItem="oOw-Kf-ZDV" secondAttribute="leading" id="5jY-6v-lLM"/>
+                            <constraint firstItem="VyB-Id-o03" firstAttribute="top" secondItem="oOw-Kf-ZDV" secondAttribute="top" id="KII-zx-y2g"/>
+                            <constraint firstAttribute="trailing" secondItem="VyB-Id-o03" secondAttribute="trailing" id="WTs-pU-KCf"/>
+                            <constraint firstAttribute="bottom" secondItem="VyB-Id-o03" secondAttribute="bottom" id="k1X-o5-8cS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="VyB-Id-o03" id="Ilc-nu-DuK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OsW-5Z-ixe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5871.1999999999998" y="1738.3808095952024"/>
+        </scene>
         <!--Setting-->
         <scene sceneID="vUS-bP-mHj">
             <objects>
@@ -783,7 +817,7 @@
             <objects>
                 <navigationController id="QfJ-P5-dx7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="kkH-8r-Z23"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lga-ts-l86">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lga-ts-l86">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -800,7 +834,7 @@
             <objects>
                 <navigationController id="tcJ-hM-WQ0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="d28-GZ-DWa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o2M-Wu-CEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="o2M-Wu-CEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -817,7 +851,7 @@
             <objects>
                 <navigationController id="ksI-fz-DAy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Dnz-aT-X7e"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NiB-np-vxj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NiB-np-vxj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -856,7 +890,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBL-Tm-ab7">
-                                            <rect key="frame" x="64" y="33" width="219" height="23"/>
+                                            <rect key="frame" x="64" y="33" width="219" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="219" id="KAC-qS-foR"/>
                                             </constraints>
@@ -911,6 +945,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="J8H-4o-SKw"/>
-        <segue reference="8T8-j7-gp3"/>
+        <segue reference="TeH-gU-spq"/>
     </inferredMetricsTieBreakers>
 </document>

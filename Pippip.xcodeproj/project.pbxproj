@@ -26,8 +26,11 @@
 		DD2216CF1E25D09A00564F9F /* settingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2216CE1E25D09A00564F9F /* settingController.swift */; };
 		DD2819A81E29226700E0C7D0 /* conditionRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */; };
 		DD2819AA1E293B7800E0C7D0 /* addConToFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2819A91E293B7800E0C7D0 /* addConToFriendController.swift */; };
+		DD3C394A1E2D40A3006980F6 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3C39491E2D40A3006980F6 /* PlaceMarker.swift */; };
 		DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A121C1E1553D8005A70A8 /* SingUpController.swift */; };
 		DD76493E1E1805C6007BFF56 /* chatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76493D1E1805C6007BFF56 /* chatController.swift */; };
+		DD7F7EEE1E2CA8B700BCEA36 /* placeConditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7F7EED1E2CA8B700BCEA36 /* placeConditionController.swift */; };
+		DD94BAE41E2BCAB60003AAAB /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94BAE31E2BCAB60003AAAB /* Condition.swift */; };
 		DD9ECA931E1CF01100673F5B /* roomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ECA921E1CF01100673F5B /* roomCell.swift */; };
 		DD9ECA951E1CF04900673F5B /* chatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ECA941E1CF04900673F5B /* chatRoomController.swift */; };
 		DD9ECA971E1CF26000673F5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ECA961E1CF26000673F5B /* User.swift */; };
@@ -87,8 +90,11 @@
 		DD2216CE1E25D09A00564F9F /* settingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingController.swift; sourceTree = "<group>"; };
 		DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = conditionRoomController.swift; sourceTree = "<group>"; };
 		DD2819A91E293B7800E0C7D0 /* addConToFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addConToFriendController.swift; sourceTree = "<group>"; };
+		DD3C39491E2D40A3006980F6 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		DD5A121C1E1553D8005A70A8 /* SingUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpController.swift; sourceTree = "<group>"; };
 		DD76493D1E1805C6007BFF56 /* chatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatController.swift; sourceTree = "<group>"; };
+		DD7F7EED1E2CA8B700BCEA36 /* placeConditionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = placeConditionController.swift; sourceTree = "<group>"; };
+		DD94BAE31E2BCAB60003AAAB /* Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		DD9ECA921E1CF01100673F5B /* roomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roomCell.swift; sourceTree = "<group>"; };
 		DD9ECA941E1CF04900673F5B /* chatRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatRoomController.swift; sourceTree = "<group>"; };
 		DD9ECA961E1CF26000673F5B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -181,7 +187,6 @@
 				DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */,
 				DD159A401E0FC3AC0045F71B /* ViewController.swift */,
 				DD159A421E0FC3AC0045F71B /* Main.storyboard */,
-				DDCEADF51E26488200EF98C4 /* DatePickerController.swift */,
 				DD159A481E0FC3AC0045F71B /* Assets.xcassets */,
 				DD159A4A1E0FC3AC0045F71B /* LaunchScreen.storyboard */,
 				DD159A4D1E0FC3AC0045F71B /* Info.plist */,
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				DD9ECA961E1CF26000673F5B /* User.swift */,
+				DD94BAE31E2BCAB60003AAAB /* Condition.swift */,
 				DD1A01CB1E1E26A900F4A303 /* Message.swift */,
 			);
 			name = Model;
@@ -231,6 +237,7 @@
 				DDCEADF31E26384800EF98C4 /* addConditionController.swift */,
 				DD2819A91E293B7800E0C7D0 /* addConToFriendController.swift */,
 				DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */,
+				DD7F7EEA1E2CA82300BCEA36 /* Condition */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -240,9 +247,19 @@
 			children = (
 				DD9ECA921E1CF01100673F5B /* roomCell.swift */,
 				DD9ECA9A1E1CF41200673F5B /* Extensions.swift */,
+				DD3C39491E2D40A3006980F6 /* PlaceMarker.swift */,
 				DDCEADF11E2637AD00EF98C4 /* ConditionCell.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DD7F7EEA1E2CA82300BCEA36 /* Condition */ = {
+			isa = PBXGroup;
+			children = (
+				DDCEADF51E26488200EF98C4 /* DatePickerController.swift */,
+				DD7F7EED1E2CA8B700BCEA36 /* placeConditionController.swift */,
+			);
+			name = Condition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +342,9 @@
 						DevelopmentTeam = 66LXTJRV3F;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -542,8 +562,11 @@
 				DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */,
 				DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */,
 				DD9ECA951E1CF04900673F5B /* chatRoomController.swift in Sources */,
+				DD7F7EEE1E2CA8B700BCEA36 /* placeConditionController.swift in Sources */,
+				DD94BAE41E2BCAB60003AAAB /* Condition.swift in Sources */,
 				DD9ECA9B1E1CF41200673F5B /* Extensions.swift in Sources */,
 				DD1A01CC1E1E26A900F4A303 /* Message.swift in Sources */,
+				DD3C394A1E2D40A3006980F6 /* PlaceMarker.swift in Sources */,
 				DDCEADF21E2637AD00EF98C4 /* ConditionCell.swift in Sources */,
 				DDCEADF41E26384800EF98C4 /* addConditionController.swift in Sources */,
 				DDCEADF61E26488200EF98C4 /* DatePickerController.swift in Sources */,

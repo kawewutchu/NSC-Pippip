@@ -8,21 +8,25 @@
 
 import UIKit
 import Firebase
-class chatRoomController: UITableViewController {
-
+import GooglePlaces
+class chatRoomController: UITableViewController, CLLocationManagerDelegate{
+    
+    var locationManager = CLLocationManager()
+    
     let cellId = "cellId"
     
     var users = [User]()
 
+    var placesClient: GMSPlacesClient!
+    
+    var condition = [Condition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
         fetchUser()
     }
-
+    
+ 
     func fetchUser() {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             

@@ -61,7 +61,7 @@ class addConditionController: UIViewController , UITableViewDelegate ,UITableVie
     }
     
     @IBAction func addConditionPress(_ sender: Any) {
-        let text = "testtime"
+        let text = "testtime2"
         let ref = FIRDatabase.database().reference().child("condition")
         let childRef = ref.childByAutoId()
         let toId = userChat.id
