@@ -302,7 +302,7 @@
             <objects>
                 <navigationController id="8xL-H9-oWq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="p4Q-Tg-ne4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6Sa-LJ-fcU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Sa-LJ-fcU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -341,7 +341,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ln-3z-1kZ">
-                                            <rect key="frame" x="64" y="33" width="219" height="23"/>
+                                            <rect key="frame" x="64" y="33" width="219" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="219" id="4yu-NQ-lAa"/>
                                             </constraints>
@@ -666,6 +666,48 @@
                                             <outlet property="timePicker" destination="ywd-8j-okH" id="HPD-0f-BPt"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addPicture" id="rlT-7t-z9x" customClass="ConditionCell" customModule="Pippip" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rlT-7t-z9x" id="YSk-wE-a8x">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รูปภาพ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iB-KH-DEU">
+                                                    <rect key="frame" x="9" y="11" width="51" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMk-Za-LvD">
+                                                    <rect key="frame" x="209" y="22" width="122" height="0.0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="122" id="jsf-MT-Az7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TmA-Kb-zxy">
+                                                    <rect key="frame" x="321" y="6" width="46" height="30"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TmA-Kb-zxy" firstAttribute="trailing" secondItem="YSk-wE-a8x" secondAttribute="trailingMargin" id="YRQ-Eu-w09"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TMk-Za-LvD" secondAttribute="trailing" constant="36" id="YYR-eW-DBi"/>
+                                                <constraint firstItem="4iB-KH-DEU" firstAttribute="centerY" secondItem="TMk-Za-LvD" secondAttribute="centerY" id="b4z-Qq-lYb"/>
+                                                <constraint firstItem="4iB-KH-DEU" firstAttribute="leading" secondItem="YSk-wE-a8x" secondAttribute="leadingMargin" constant="1" id="ds4-Jf-U5M"/>
+                                                <constraint firstItem="4iB-KH-DEU" firstAttribute="centerY" secondItem="TmA-Kb-zxy" secondAttribute="centerY" id="gtz-D4-xEK"/>
+                                                <constraint firstItem="TmA-Kb-zxy" firstAttribute="centerY" secondItem="YSk-wE-a8x" secondAttribute="centerY" id="kAA-Sk-GYa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addPicture" destination="TmA-Kb-zxy" id="bWK-VJ-rbr"/>
+                                            <outlet property="timeLabel" destination="4iB-KH-DEU" id="yhT-3U-fvD"/>
+                                            <outlet property="timePicker" destination="TMk-Za-LvD" id="8xR-Ex-obF"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Eeb-eH-Nd4" id="nfW-Xw-mQk"/>
@@ -766,7 +808,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="VyB-Id-o03" id="Ilc-nu-DuK"/>
+                        <outlet property="mapView" destination="VyB-Id-o03" id="Xeo-Fn-zUK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OsW-5Z-ixe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -817,7 +859,7 @@
             <objects>
                 <navigationController id="QfJ-P5-dx7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="kkH-8r-Z23"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lga-ts-l86">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lga-ts-l86">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -834,7 +876,7 @@
             <objects>
                 <navigationController id="tcJ-hM-WQ0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="d28-GZ-DWa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="o2M-Wu-CEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o2M-Wu-CEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -851,7 +893,7 @@
             <objects>
                 <navigationController id="ksI-fz-DAy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Dnz-aT-X7e"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NiB-np-vxj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NiB-np-vxj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

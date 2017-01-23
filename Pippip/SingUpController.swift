@@ -64,7 +64,7 @@ class SingUpController: UIViewController ,UIImagePickerControllerDelegate ,UINav
                 let imageName = NSUUID().uuidString
                 print(imageName)
                 let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).png")
-                if let uploadData = UIImagePNGRepresentation(self.userImageView.image!) {
+                if let image = self.userImageView.image , let uploadData = UIImageJPEGRepresentation(image, 0.1){
                     
                     storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                         

@@ -12,7 +12,7 @@ class DatePickerController: UIViewController  {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     var dateTime = ""
-    let userDefaults = Foundation.UserDefaults.standard
+    let conditionDefaults = Foundation.UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.addTarget(self, action: Selector("datePickerChanged:"), for: UIControlEvents.valueChanged)
@@ -39,12 +39,12 @@ class DatePickerController: UIViewController  {
             dateTime = "\(day)/\(month)/\(year) \(hour):\(min)"
             print("\(day) \(month) \(year) \(hour) \(min)")
             
-            userDefaults.set(dateTime, forKey: "Key")
+            conditionDefaults.set(dateTime, forKey: "Key")
         }
         let timestamp = datePicker.date.timeIntervalSince1970
         
         print(timestamp)
-        userDefaults.set(timestamp, forKey: "timestamp")
+        conditionDefaults.set(timestamp, forKey: "timestamp")
         
         
     }

@@ -43,8 +43,8 @@ class roomChatController: UITableViewController {
                     return
                 }
                 
-                let condition = Message()
-                condition.setValuesForKeys(dictionary)
+                let condition = Message(dictionary:dictionary)
+                //condition.setValuesForKeys(dictionary)
                 
                 var chatPartnerId =  condition.chatPartnerId()
                 print(condition.timestamp)
@@ -101,7 +101,7 @@ class roomChatController: UITableViewController {
             messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let message = Message()
+                    let message = Message(dictionary : dictionary)
                     message.setValuesForKeys(dictionary)
                     
                     if let chatPartnerId = message.chatPartnerId() {
@@ -131,7 +131,7 @@ class roomChatController: UITableViewController {
         ref.observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let message = Message()
+                let message = Message(dictionary :dictionary)
                 message.setValuesForKeys(dictionary)
                 //                self.messages.append(message)
                 

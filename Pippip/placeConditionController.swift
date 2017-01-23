@@ -9,89 +9,113 @@
 import UIKit
 import GooglePlaces
 import GoogleMaps
-class placeConditionController: UIViewController{
+class placeConditionController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate{
 
     
     @IBOutlet var mapView: GMSMapView!
-    let locationManager = CLLocationManager()
-    var placesClient: GMSPlacesClient!
-    
+    var cirlce: GMSCircle!
 
+    var latitude  = Double()
+    var longitude = Double()
+    var name = String()
+    var SID = String()
+    var didFindMyLocation = false
+    let locationManager = CLLocationManager()
+    
+    let conditionDefaults = Foundation.UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        placesClient = GMSPlacesClient.shared()
-        getCurrent()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func getCurrent(){
-//        let center = CLLocationCoordinate2DMake(51.5108396, -0.0922251)
-//        let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
-//        let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
-//        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-//        let config = GMSPlacePickerConfig(viewport: viewport)
-//        placePicker = GMSPlacePicker(config: config)
-//        
-//        placePicker?.pickPlaceWithCallback({ (place: GMSPlace?, error: NSError?) -> Void in
-//            if let error = error {
-//                print("Pick Place error: \(error.localizedDescription)")
-//                return
-//            }
-//            
-//            if let place = place {
-//                print("Place name \(place.name)")
-//                print("Place address \(place.formattedAddress)")
-//                print("Place attributions \(place.attributions)")
-//            } else {
-//                print("No place selected")
-//            }
-//        })
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-}
-
-
-extension placeConditionController: CLLocationManagerDelegate {
-    // 2
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        // 3
-        if status == .authorizedWhenInUse {
-            
-            // 4
+        
+        mapView.isMyLocationEnabled = true
+        self.locationManager.requestWhenInUseAuthorization()
+        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+         marker.map = mapView
+        self.mapView.delegate = self
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
-            
-            //5
+        }
+        
+    }
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
             mapView.isMyLocationEnabled = true
             mapView.settings.myLocationButton = true
         }
     }
+    let marker = GMSMarker()
     
-    // 6
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            
-            // 7
-            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-            
-            // 8
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        if locations.first != nil {
             locationManager.stopUpdatingLocation()
         }
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        
+        mapView.camera = GMSCameraPosition(target: locValue, zoom: 15, bearing: 0, viewingAngle: 0)
+        
+        marker.position = CLLocationCoordinate2DMake(locValue.latitude, locValue.longitude)
+        marker.title = "ตำแหน่งตอนนี้"
+        marker.snippet = "กดเพื่อตั้งเป็นบ้านของนักเรียน"
+        latitude = locValue.latitude
+        longitude = locValue.longitude
+        marker.map = mapView
+
+        
         
     }
+    
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+    
+        
+        let alert = UIAlertController(title: "Add place!",
+                                      message: "!!!!!!!",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            (result : UIAlertAction) -> Void in
+        }
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            (result : UIAlertAction) -> Void in
+             print(self.longitude)
+             self.conditionDefaults.set(self.longitude, forKey: "longtitude")
+             self.conditionDefaults.set(self.latitude, forKey: "latitude")
+        }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+
+    
+    }
+    
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        return true
+    }
+    
+    func pressed(){
+        print("vbvb")
+    }
+    
+   func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        //print("\(position.target.latitude) \(position.target.longitude)")
+        
+        
+        //print(position.target)
+        
+        marker.position = CLLocationCoordinate2DMake(position.target.latitude, position.target.longitude)
+        mapView.selectedMarker = marker
+        
+        
+        latitude = position.target.latitude
+        longitude = position.target.longitude
+    }
+
 }

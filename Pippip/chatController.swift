@@ -1,3 +1,5 @@
+
+
 //
 //  chatController.swift
 //  Pippip
@@ -19,6 +21,7 @@ class chatController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         massage.removeAll()
+        messages.removeAll()
         super.viewDidLoad()
         self.senderId = FIRAuth.auth()!.currentUser!.uid
         self.senderDisplayName = "jarb"
@@ -44,27 +47,48 @@ class chatController: JSQMessagesViewController {
             
             let messageId = snapshot.key
             let messagesRef = FIRDatabase.database().reference().child("messages").child(messageId)
+            
             messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 guard let dictionary = snapshot.value as? [String: AnyObject] else {
                     return
                 }
                 
-                let message = Message()
-                message.setValuesForKeys(dictionary)
-            
-                var chatPartnerId =  message.chatPartnerId()
+                let message = Message(dictionary:dictionary)
+                 //message.setValuesForKeys(dictionary:dictionary)
+              //  self.messages.append(Message(dictionary: dictionary))
+                print(dictionary["imageUrl"])
+                print(dictionary["text"])
+                let chatPartnerId =  message.chatPartnerId()
                 if chatPartnerId == self.userChat.id && !self.messageFormSendCheck{
                    self.messages.append(message)
                    let text = message.text
-                    if(self.senderId == message.fromId){
-                        print(message.fromId)
+                   let imageUrl = message.imageUrl
+                    
+                    
+                    if(message.imageUrl != nil){
+                        let url = URL(string: imageUrl!)
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        let imageChat = UIImage(data: data!)
+                        
+                        if(self.senderId == message.fromId ){
+                            let photo = JSQPhotoMediaItem(image: imageChat)
+                            photo?.appliesMediaViewMaskAsOutgoing = true
+                            self.massage.append(JSQMessage(senderId: message.fromId, displayName:  "1", media: photo))
+                            
+                        }else{
+                            let photo = JSQPhotoMediaItem(image: imageChat)
+                            photo?.appliesMediaViewMaskAsOutgoing = false
+                              self.massage.append(JSQMessage(senderId: message.fromId, displayName: "1", media: photo))
+                        }
+                        
+                    }else if(self.senderId == message.fromId && text != nil){
+                        //print(message.fromId)
                         self.massage.append(JSQMessage(senderId: message.fromId, displayName: "1", text: text))
                     }else{
-                        print(message.fromId)
+                       // print(message.fromId)
                         self.massage.append(JSQMessage(senderId: message.fromId, displayName: "1", text: text))
                     }
-                    
                     DispatchQueue.main.async{
                         self.collectionView.reloadData()
                     }
@@ -75,6 +99,12 @@ class chatController: JSQMessagesViewController {
         }, withCancel: nil)
     }
     
+    public func loadimageformfirebase(_ message:Message){
+        print(message.imageUrl!)
+        let imageChat = loadImageUsingCacheWithUrlString(message.imageUrl!)
+        
+        
+    }
     
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
@@ -96,6 +126,7 @@ class chatController: JSQMessagesViewController {
         print(senderId)
         if message.senderId == senderId { // 2
             return outgoingBubbleImageView
+            
         } else { // 3
             return incomingBubbleImageView
         }
@@ -144,14 +175,17 @@ class chatController: JSQMessagesViewController {
         let cancel = UIAlertAction(title: "cancle", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
             
         }
-        
+        var photoimage = UIImage()
         let photo = UIAlertAction(title: "Photo Libary", style: UIAlertActionStyle.default) { (UIAlertAction) in
-            self.getMediaPicker(type: kUTTypeImage)
+             self.getMediaPicker(type: kUTTypeImage)
         }
         
         let vedio = UIAlertAction(title: "Vedio Libare", style: UIAlertActionStyle.default) { (UIAlertAction) in
             self.getMediaPicker(type: kUTTypeMovie)
         }
+
+        
+
         
         sheet.addAction(photo)
         sheet.addAction(vedio)
@@ -159,6 +193,7 @@ class chatController: JSQMessagesViewController {
         self.present(sheet, animated: true, completion: nil)
 
     }
+    
     func getMediaPicker(type: CFString){
         let MediaPicker = UIImagePickerController()
         MediaPicker.delegate = self
@@ -202,6 +237,56 @@ class chatController: JSQMessagesViewController {
         
     }
     
+    public func sendMessageWithImageUrl(_ imageUrl: String) {
+        let ref = FIRDatabase.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let toId = userChat.id
+        let fromId = FIRAuth.auth()!.currentUser!.uid
+        let timestamp = Int(Date().timeIntervalSince1970)
+        
+        let values = ["imageUrl": imageUrl, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
+        
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error)
+                return
+            }
+            
+        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
+            
+        let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+        let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId!)
+            recipientUserMessagesRef.updateChildValues([messageId: 1])
+        }
+    }
+
+    public func sendMessageWithVideoUrl(_ imageUrl: String) {
+        let ref = FIRDatabase.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let toId = userChat.id
+        let fromId = FIRAuth.auth()!.currentUser!.uid
+        let timestamp = Int(Date().timeIntervalSince1970)
+        
+        let values = ["VideoUrl": imageUrl, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
+        
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
+            
+            let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId!)
+            recipientUserMessagesRef.updateChildValues([messageId: 1])
+        }
+    }
+    
       /*
     // MARK: - Navigation
 
@@ -219,10 +304,13 @@ extension chatController: UIImagePickerControllerDelegate , UINavigationControll
         
         if let picture = info[UIImagePickerControllerOriginalImage] as? UIImage {
             let photo = JSQPhotoMediaItem(image: picture)
+            uploadToFirebaseStorageUsingImage(picture)
             massage.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
+            messageFormSendCheck = true
 
         }else if let video =  info[UIImagePickerControllerMediaURL] as? NSURL{
             let videoItem = JSQVideoMediaItem(fileURL: video as URL!, isReadyToPlay: true)
+            //uploadToFirebaseStorageUsingVideo(video)
             massage.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: videoItem))
 
         }
@@ -230,4 +318,73 @@ extension chatController: UIImagePickerControllerDelegate , UINavigationControll
         collectionView.reloadData()
         
     }
+    
+    
+    private func uploadToFirebaseStorageUsingImage(_ image: UIImage) {
+        let imageName = UUID().uuidString
+        let ref = FIRStorage.storage().reference().child("message_images").child(imageName)
+        
+        if let uploadData = UIImageJPEGRepresentation(image, 0.2) {
+            ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                if error != nil {
+                    print("Failed to upload image:", error)
+                    return
+                }
+                
+                if let imageUrl = metadata?.downloadURL()?.absoluteString {
+                    self.sendMessageWithImageUrl(imageUrl)
+                }
+                
+            })
+        }
+    }
+    
+//    private func uploadToFirebaseStorageUsingVideo(_ url: NSURL) {
+//        let filename = UUID().uuidString + ".mov"
+//        let uploadTask = FIRStorage.storage().reference().child("message_movies").child(filename).putFile(url as URL, metadata: nil, completion: { (metadata, error) in
+//            
+//            if error != nil {
+//                print("Failed upload of video:", error)
+//                return
+//            }
+//            
+//            if let videoUrl = metadata?.downloadURL()?.absoluteString {
+//                if let thumbnailImage = self.thumbnailImageForFileUrl(url) {
+//                    
+//                    self.uploadToFirebaseStorageUsingImage(thumbnailImage, completion: { (imageUrl) in
+//                        let properties: [String: AnyObject] = ["imageUrl": imageUrl, "imageWidth": thumbnailImage.size.width, "imageHeight": thumbnailImage.size.height, "videoUrl": videoUrl]
+//                        self.sendMessageWithProperties(properties)
+//                        
+//                    })
+//                }
+//            }
+//        })
+//        
+//        uploadTask.observeStatus(.Progress) { (snapshot) in
+//            if let completedUnitCount = snapshot.progress?.completedUnitCount {
+//                self.navigationItem.title = String(completedUnitCount)
+//            }
+//        }
+//        
+//        uploadTask.observeStatus(.Success) { (snapshot) in
+//            self.navigationItem.title = self.user?.name
+//        }
+//    }
+    
+
+    func loadImageUsingCacheWithUrlString(_ urlString: String) -> UIImage {
+        
+        var image = UIImage()
+
+        if let cachedImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            image = cachedImage
+        }
+        DispatchQueue.main.async{
+            self.collectionView.reloadData()
+        }
+
+        return image
+    }
+
 }

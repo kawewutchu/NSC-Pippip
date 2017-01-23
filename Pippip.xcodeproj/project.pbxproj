@@ -183,6 +183,7 @@
 				DD1A01C81E1E260000F4A303 /* Helpers */,
 				DD1A01C61E1E25CB00F4A303 /* Model */,
 				DD1A01C71E1E25DE00F4A303 /* Controller */,
+				DD7F7EEA1E2CA82300BCEA36 /* Condition */,
 				DD0561721E101D870037B29B /* Pippip.entitlements */,
 				DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */,
 				DD159A401E0FC3AC0045F71B /* ViewController.swift */,
@@ -234,10 +235,9 @@
 				DD0561701E100CBF0037B29B /* SingInViewController.swift */,
 				DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */,
 				DD2216CE1E25D09A00564F9F /* settingController.swift */,
-				DDCEADF31E26384800EF98C4 /* addConditionController.swift */,
 				DD2819A91E293B7800E0C7D0 /* addConToFriendController.swift */,
 				DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */,
-				DD7F7EEA1E2CA82300BCEA36 /* Condition */,
+				DDCEADF31E26384800EF98C4 /* addConditionController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
