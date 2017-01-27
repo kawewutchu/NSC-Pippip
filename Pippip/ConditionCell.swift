@@ -12,9 +12,7 @@ class ConditionCell: UITableViewCell {
 
   
     @IBOutlet weak var timePicker: UILabel!
-    
     @IBOutlet weak var addTime: UIButton!
-    
     @IBOutlet weak var addPicture: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {

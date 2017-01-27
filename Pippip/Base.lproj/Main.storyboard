@@ -302,7 +302,7 @@
             <objects>
                 <navigationController id="8xL-H9-oWq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="p4Q-Tg-ne4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Sa-LJ-fcU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6Sa-LJ-fcU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -402,11 +402,87 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="KUY" id="ZRJ-04-3qs"/>
+                    <navigationItem key="navigationItem" title="KUY" id="ZRJ-04-3qs">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Rce-QE-28L">
+                            <connections>
+                                <action selector="getCondition:" destination="fLo-Sb-J44" id="3s6-7D-9kw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="jOF-OU-5VQ" kind="show" identifier="place" id="prJ-qj-aSC"/>
+                        <segue destination="LFD-XK-hBT" kind="show" identifier="picture" id="xm9-Om-lV4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXP-QN-jzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3986" y="576"/>
+        </scene>
+        <!--Get Place Condition Controller-->
+        <scene sceneID="uRT-e9-bgN">
+            <objects>
+                <viewController id="jOF-OU-5VQ" customClass="getPlaceConditionController" customModule="Pippip" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gdJ-dY-W5G"/>
+                        <viewControllerLayoutGuide type="bottom" id="FXt-Xj-5xD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1gE-29-Ooq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3L-se-Nxi" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v3L-se-Nxi" firstAttribute="top" secondItem="1gE-29-Ooq" secondAttribute="top" id="5zo-Bb-QLr"/>
+                            <constraint firstAttribute="bottom" secondItem="v3L-se-Nxi" secondAttribute="bottom" id="PWP-VB-Y2U"/>
+                            <constraint firstItem="v3L-se-Nxi" firstAttribute="leading" secondItem="1gE-29-Ooq" secondAttribute="leading" id="RAF-wy-b2n"/>
+                            <constraint firstAttribute="trailing" secondItem="v3L-se-Nxi" secondAttribute="trailing" id="pFZ-tf-pbn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="v3L-se-Nxi" id="IJw-TM-uz1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GIl-OS-PiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5057" y="260"/>
+        </scene>
+        <!--Picture Controller-->
+        <scene sceneID="W3D-zf-rb9">
+            <objects>
+                <viewController id="LFD-XK-hBT" customClass="pictureController" customModule="Pippip" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rW3-Jx-B9U"/>
+                        <viewControllerLayoutGuide type="bottom" id="prf-ur-ex8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AeR-tp-qCy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pEw-tQ-etE">
+                                <rect key="frame" x="67" y="167" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.052622462799650986" green="0.59143096323946387" blue="0.94123536348342896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pEw-tQ-etE" firstAttribute="centerX" secondItem="AeR-tp-qCy" secondAttribute="centerX" id="6uh-BE-vKy"/>
+                            <constraint firstItem="pEw-tQ-etE" firstAttribute="leading" secondItem="AeR-tp-qCy" secondAttribute="leadingMargin" constant="51" id="Arq-wj-Pvt"/>
+                            <constraint firstItem="prf-ur-ex8" firstAttribute="top" secondItem="pEw-tQ-etE" secondAttribute="bottom" constant="323" id="djY-rW-UNg"/>
+                            <constraint firstItem="pEw-tQ-etE" firstAttribute="top" secondItem="rW3-Jx-B9U" secondAttribute="bottom" constant="103" id="zZo-xy-KC4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="test" destination="pEw-tQ-etE" id="66K-5O-dpX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uN6-Jr-z8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5033" y="904"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rFp-56-USO">
@@ -780,7 +856,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6j-NB-KKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5841" y="1058"/>
+            <point key="canvasLocation" x="6172" y="982"/>
         </scene>
         <!--Place Condition Controller-->
         <scene sceneID="v2v-or-sz1">
@@ -813,7 +889,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OsW-5Z-ixe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5871.1999999999998" y="1738.3808095952024"/>
+            <point key="canvasLocation" x="6172" y="1753"/>
         </scene>
         <!--Setting-->
         <scene sceneID="vUS-bP-mHj">
@@ -859,7 +935,7 @@
             <objects>
                 <navigationController id="QfJ-P5-dx7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="kkH-8r-Z23"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lga-ts-l86">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lga-ts-l86">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -876,7 +952,7 @@
             <objects>
                 <navigationController id="tcJ-hM-WQ0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="d28-GZ-DWa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o2M-Wu-CEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="o2M-Wu-CEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -893,7 +969,7 @@
             <objects>
                 <navigationController id="ksI-fz-DAy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Dnz-aT-X7e"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NiB-np-vxj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NiB-np-vxj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

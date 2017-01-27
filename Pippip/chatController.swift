@@ -19,6 +19,8 @@ class chatController: JSQMessagesViewController {
     var massage = [JSQMessage]()
     var messageFormSendCheck = false
     
+    var image22 = UIImage()
+    
     override func viewDidLoad() {
         massage.removeAll()
         messages.removeAll()
@@ -73,6 +75,7 @@ class chatController: JSQMessagesViewController {
                         
                         if(self.senderId == message.fromId ){
                             let photo = JSQPhotoMediaItem(image: imageChat)
+                            self.image22 = imageChat!
                             photo?.appliesMediaViewMaskAsOutgoing = true
                             self.massage.append(JSQMessage(senderId: message.fromId, displayName:  "1", media: photo))
                             
@@ -98,12 +101,14 @@ class chatController: JSQMessagesViewController {
             
         }, withCancel: nil)
     }
-    
+    var i = 0
     public func loadimageformfirebase(_ message:Message){
         print(message.imageUrl!)
         let imageChat = loadImageUsingCacheWithUrlString(message.imageUrl!)
-        
-        
+        print(i)
+        i += 1
+        self.image22 = loadImageUsingCacheWithUrlString(message.imageUrl!)
+    
     }
     
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
@@ -296,6 +301,37 @@ class chatController: JSQMessagesViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func getCondition(_ sender: UIBarButtonItem) {
+        let sheet = UIAlertController(title: "get condition", message: "Please selecta media", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let cancel = UIAlertAction(title: "cancle", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+            
+        }
+        var photoimage = UIImage()
+        let photo = UIAlertAction(title: "get place", style: UIAlertActionStyle.default) { (UIAlertAction) in
+             self.performSegue(withIdentifier: "place", sender: self)
+        }
+        
+        let vedio = UIAlertAction(title: "get photo", style: UIAlertActionStyle.default) { (UIAlertAction) in
+              self.performSegue(withIdentifier: "picture", sender: self)
+        }
+        
+        
+        
+        
+        sheet.addAction(photo)
+        sheet.addAction(vedio)
+        sheet.addAction(cancel)
+        self.present(sheet, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "picture" {
+            if let viewController = segue.destination as? pictureController {
+               viewController.image1 = self.image22
+            }
+        }
+    }
 
 }
 
@@ -386,5 +422,7 @@ extension chatController: UIImagePickerControllerDelegate , UINavigationControll
 
         return image
     }
+    
+    
 
 }

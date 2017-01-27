@@ -13,7 +13,8 @@ class Condition: NSObject {
     var text: String?
     var timestamp: NSNumber?
     var toId: String?
-    
+    var longtitude = Double()
+    var latitude = Double()
     
     func chatPartnerId() -> String? {
         return fromId == FIRAuth.auth()?.currentUser?.uid ? toId : fromId

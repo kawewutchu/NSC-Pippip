@@ -49,9 +49,11 @@ class roomChatController: UITableViewController {
                 var chatPartnerId =  condition.chatPartnerId()
                 print(condition.timestamp)
                 let timestamp = Int(Date().timeIntervalSince1970)
-                if(Int(condition.timestamp!) <= timestamp){
-                    self.sentCondition(toId: condition.toId!, fromId: condition.fromId! , text: condition.text!)
-                    
+                if(condition.timestamp != nil){
+                    if(Int(condition.timestamp!) <= timestamp){
+                        self.sentCondition(toId: condition.toId!, fromId: condition.fromId! , text: condition.text!)
+                        
+                    }
                 }
             }, withCancel: nil)
             

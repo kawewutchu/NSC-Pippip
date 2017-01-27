@@ -27,6 +27,7 @@
 		DD2819A81E29226700E0C7D0 /* conditionRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */; };
 		DD2819AA1E293B7800E0C7D0 /* addConToFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2819A91E293B7800E0C7D0 /* addConToFriendController.swift */; };
 		DD3C394A1E2D40A3006980F6 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3C39491E2D40A3006980F6 /* PlaceMarker.swift */; };
+		DD4870E31E378D570094AC49 /* getPlaceConditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4870E21E378D570094AC49 /* getPlaceConditionController.swift */; };
 		DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A121C1E1553D8005A70A8 /* SingUpController.swift */; };
 		DD76493E1E1805C6007BFF56 /* chatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD76493D1E1805C6007BFF56 /* chatController.swift */; };
 		DD7F7EEE1E2CA8B700BCEA36 /* placeConditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7F7EED1E2CA8B700BCEA36 /* placeConditionController.swift */; };
@@ -38,6 +39,7 @@
 		DDCEADF21E2637AD00EF98C4 /* ConditionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCEADF11E2637AD00EF98C4 /* ConditionCell.swift */; };
 		DDCEADF41E26384800EF98C4 /* addConditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCEADF31E26384800EF98C4 /* addConditionController.swift */; };
 		DDCEADF61E26488200EF98C4 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCEADF51E26488200EF98C4 /* DatePickerController.swift */; };
+		DDF6C7B21E3B7FAC006DB969 /* pictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C7B11E3B7FAC006DB969 /* pictureController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,7 @@
 		DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = conditionRoomController.swift; sourceTree = "<group>"; };
 		DD2819A91E293B7800E0C7D0 /* addConToFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addConToFriendController.swift; sourceTree = "<group>"; };
 		DD3C39491E2D40A3006980F6 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
+		DD4870E21E378D570094AC49 /* getPlaceConditionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getPlaceConditionController.swift; sourceTree = "<group>"; };
 		DD5A121C1E1553D8005A70A8 /* SingUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpController.swift; sourceTree = "<group>"; };
 		DD76493D1E1805C6007BFF56 /* chatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatController.swift; sourceTree = "<group>"; };
 		DD7F7EED1E2CA8B700BCEA36 /* placeConditionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = placeConditionController.swift; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 		DDCEADF11E2637AD00EF98C4 /* ConditionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionCell.swift; sourceTree = "<group>"; };
 		DDCEADF31E26384800EF98C4 /* addConditionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addConditionController.swift; sourceTree = "<group>"; };
 		DDCEADF51E26488200EF98C4 /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
+		DDF6C7B11E3B7FAC006DB969 /* pictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pictureController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,7 @@
 				DD159A3E1E0FC3AC0045F71B /* AppDelegate.swift */,
 				DD159A401E0FC3AC0045F71B /* ViewController.swift */,
 				DD159A421E0FC3AC0045F71B /* Main.storyboard */,
+				DDF6C7B11E3B7FAC006DB969 /* pictureController.swift */,
 				DD159A481E0FC3AC0045F71B /* Assets.xcassets */,
 				DD159A4A1E0FC3AC0045F71B /* LaunchScreen.storyboard */,
 				DD159A4D1E0FC3AC0045F71B /* Info.plist */,
@@ -236,8 +241,7 @@
 				DD1A01CD1E1E3B8300F4A303 /* roomChatController.swift */,
 				DD2216CE1E25D09A00564F9F /* settingController.swift */,
 				DD2819A91E293B7800E0C7D0 /* addConToFriendController.swift */,
-				DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */,
-				DDCEADF31E26384800EF98C4 /* addConditionController.swift */,
+				DD4870E11E378CAC0094AC49 /* Condition */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -251,6 +255,16 @@
 				DDCEADF11E2637AD00EF98C4 /* ConditionCell.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DD4870E11E378CAC0094AC49 /* Condition */ = {
+			isa = PBXGroup;
+			children = (
+				DDCEADF31E26384800EF98C4 /* addConditionController.swift */,
+				DD2819A71E29226700E0C7D0 /* conditionRoomController.swift */,
+				DD4870E21E378D570094AC49 /* getPlaceConditionController.swift */,
+			);
+			name = Condition;
 			sourceTree = "<group>";
 		};
 		DD7F7EEA1E2CA82300BCEA36 /* Condition */ = {
@@ -561,7 +575,9 @@
 				DD2216CF1E25D09A00564F9F /* settingController.swift in Sources */,
 				DD5A121D1E1553D8005A70A8 /* SingUpController.swift in Sources */,
 				DD159A3F1E0FC3AC0045F71B /* AppDelegate.swift in Sources */,
+				DD4870E31E378D570094AC49 /* getPlaceConditionController.swift in Sources */,
 				DD9ECA951E1CF04900673F5B /* chatRoomController.swift in Sources */,
+				DDF6C7B21E3B7FAC006DB969 /* pictureController.swift in Sources */,
 				DD7F7EEE1E2CA8B700BCEA36 /* placeConditionController.swift in Sources */,
 				DD94BAE41E2BCAB60003AAAB /* Condition.swift in Sources */,
 				DD9ECA9B1E1CF41200673F5B /* Extensions.swift in Sources */,

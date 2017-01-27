@@ -17,7 +17,7 @@ class addConditionController: UIViewController , UITableViewDelegate ,UITableVie
     var longtitude = Double()
     var latitude = Double()
     let conditionDefaults = Foundation.UserDefaults.standard
-    
+    var conditionType = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         print("date" + dateTime)
@@ -31,12 +31,14 @@ class addConditionController: UIViewController , UITableViewDelegate ,UITableVie
     override func viewWillAppear(_ animated: Bool) {
         if conditionDefaults.string(forKey: "Key") != nil{
             dateTime = conditionDefaults.string(forKey: "Key")!
+            conditionType = "time"
             self.tableView.reloadData()
         }
         if conditionDefaults.string(forKey: "longtitude") != nil{
             longtitude = conditionDefaults.double(forKey: "longtitude")
             latitude = conditionDefaults.double(forKey: "latitude")
             print(longtitude)
+            conditionType = "place"
             self.tableView.reloadData()
         }
     
@@ -93,27 +95,49 @@ class addConditionController: UIViewController , UITableViewDelegate ,UITableVie
     }
     
     @IBAction func addConditionPress(_ sender: Any) {
-        let text = "testtime2"
+        let text = "testplaace"
         let ref = FIRDatabase.database().reference().child("condition")
         let childRef = ref.childByAutoId()
         let toId = userChat.id
         let fromId = FIRAuth.auth()!.currentUser!.uid
-        let timestamp = self.conditionDefaults.string(forKey: "timestamp")!
-        let values = ["text": text,"toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
-        
-        childRef.updateChildValues(values) { (error, ref) in
-            if error != nil {
-                print(error)
-                return
+      
+        //let values = Dictionary()
+        if(conditionType == "time"){
+           let timestamp = self.conditionDefaults.string(forKey: "timestamp")!
+           let values = ["text": text,"toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
+            
+            childRef.updateChildValues(values) { (error, ref) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                let userMessagesRef = FIRDatabase.database().reference().child("user-condition").child(fromId)
+                
+                let messageId = childRef.key
+                userMessagesRef.updateChildValues([messageId: 1])
+                
             }
-            
-            let userMessagesRef = FIRDatabase.database().reference().child("user-condition").child(fromId)
-            
-            let messageId = childRef.key
-            userMessagesRef.updateChildValues([messageId: 1])
-   
-        }
 
+        }
+        else if(conditionType == "place"){
+            
+            let values = ["text": text,"toId": toId, "fromId": fromId, "latitude":latitude ,"longtitude":longtitude] as [String : Any]
+            
+            childRef.updateChildValues(values) { (error, ref) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                let userMessagesRef = FIRDatabase.database().reference().child("user-condition").child(fromId)
+                
+                let messageId = childRef.key
+                userMessagesRef.updateChildValues([messageId: 1])
+                
+            }
+        }
+       
     }
    
    
