@@ -316,23 +316,106 @@ class chatController: JSQMessagesViewController {
               self.performSegue(withIdentifier: "picture", sender: self)
         }
         
+        let password = UIAlertAction(title: "get password", style: UIAlertActionStyle.default) { (UIAlertAction) in
+           self.getpassword()
+        }
         
         
-        
+        sheet.addAction(password)
         sheet.addAction(photo)
         sheet.addAction(vedio)
         sheet.addAction(cancel)
         self.present(sheet, animated: true, completion: nil)
     }
     
+    func getpassword(){
+        let alert = UIAlertController(title: "password", message: "ใส่ password เพื่อรับข้อความ", preferredStyle: .alert)
+       
+        alert.addTextField { (textField) in
+            textField.text = ""
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text!)")
+            self.checkpassword((textField?.text)!)
+            }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "picture" {
             if let viewController = segue.destination as? pictureController {
                viewController.image1 = self.image22
             }
         }
+        if segue.identifier == "place" {
+            if let viewController = segue.destination as? getPlaceConditionController {
+                viewController.userChat = userChat
+            }
+        }
     }
 
+    func checkpassword(_ password:String){
+        print(password)
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        let userMessagesRef = FIRDatabase.database().reference().child("user-condition").child(uid)
+        userMessagesRef.observe(.childAdded, with: { (snapshot) in
+            
+            let messageId = snapshot.key
+            let messagesRef = FIRDatabase.database().reference().child("condition").child(messageId)
+            
+            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let dictionary = snapshot.value as? [String: AnyObject] else {
+                    return
+                }
+                
+                let condition = Condition()
+                condition.setValuesForKeys(dictionary)
+                print(self.userChat.id)
+                let chatPartnerId =  condition.chatPartnerId()
+                print(chatPartnerId)
+                if chatPartnerId == self.userChat.id{
+                    let text = condition.text
+                    if(condition.password == password){
+                        self.sendmessage(condition.text!)
+                    }
+                    
+                    
+                }
+                
+            }, withCancel: nil)
+            
+        }, withCancel: nil)
+
+    }
+    func sendmessage(_ text: String){
+        let ref = FIRDatabase.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let toId = userChat.id
+        let fromId = FIRAuth.auth()!.currentUser!.uid
+        let timestamp = Int(Date().timeIntervalSince1970)
+        
+        let values = ["text": text, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
+        
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
+            
+            let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId!)
+            recipientUserMessagesRef.updateChildValues([messageId: 1])
+        }
+    }
 }
 
 extension chatController: UIImagePickerControllerDelegate , UINavigationControllerDelegate{

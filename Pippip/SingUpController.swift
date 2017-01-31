@@ -22,7 +22,8 @@ class SingUpController: UIViewController ,UIImagePickerControllerDelegate ,UINav
         userImageView.layer.masksToBounds = true
         userImageView.contentMode = .scaleAspectFill
         // Do any additional setup after loading the view.
-    }
+        
+             }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -158,3 +159,6 @@ class SingUpController: UIViewController ,UIImagePickerControllerDelegate ,UINav
     */
 
 }
+
+
+

@@ -10,7 +10,10 @@ import UIKit
 
 class ConditionCell: UITableViewCell {
 
+    @IBOutlet weak var textField2: UITextField!
   
+    @IBOutlet weak var textField: UITextField!
+    
     @IBOutlet weak var timePicker: UILabel!
     @IBOutlet weak var addTime: UIButton!
     @IBOutlet weak var addPicture: UIButton!

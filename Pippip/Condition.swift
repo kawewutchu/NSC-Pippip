@@ -8,8 +8,8 @@
 import UIKit
 import Firebase
 class Condition: NSObject {
-    
     var fromId: String?
+    var password: String?
     var text: String?
     var timestamp: NSNumber?
     var toId: String?

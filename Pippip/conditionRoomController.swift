@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 class conditionRoomController: UITableViewController {
     let cellId = "cellId"
-    var messages = [Message]()
+    var messages = [Condition]()
     let user = User()
-    var messagesDictionary = [String: Message]()
+    var messagesDictionary = [String: Condition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class conditionRoomController: UITableViewController {
             messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let message = Message(dictionary : dictionary)
+                    let message = Condition()
                     message.setValuesForKeys(dictionary)
                     
                     if let chatPartnerId = message.chatPartnerId() {
@@ -69,7 +69,7 @@ class conditionRoomController: UITableViewController {
         ref.observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let message = Message(dictionary : dictionary)
+                let message = Condition()
                 message.setValuesForKeys(dictionary)
                 //                self.messages.append(message)
                 
@@ -101,7 +101,7 @@ class conditionRoomController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! roomCell
         
         let message = messages[indexPath.row]
-        cell.message = message
+        cell.condition = message
         cell.profileImg.translatesAutoresizingMaskIntoConstraints = false
         cell.profileImg.layer.cornerRadius = 24
         cell.profileImg.layer.masksToBounds = true
@@ -115,30 +115,30 @@ class conditionRoomController: UITableViewController {
         return 72
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indexuser = indexPath.row
-        let message = messages[indexPath.row]
-        
-        guard let chatPartnerId = message.chatPartnerId() else {
-            return
-        }
-        
-        let ref = FIRDatabase.database().reference().child("users").child(chatPartnerId)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: AnyObject] else {
-                return
-            }
-            
-            self.user.id = chatPartnerId
-            self.user.setValuesForKeys(dictionary)
-            DispatchQueue.main.async{
-                self.performSegue(withIdentifier: "show", sender: self)
-            }
-            
-            
-        }, withCancel: nil)
-        
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        indexuser = indexPath.row
+//        let message = messages[indexPath.row]
+//        
+//        guard let chatPartnerId = message.chatPartnerId() else {
+//            return
+//        }
+//        
+//        let ref = FIRDatabase.database().reference().child("users").child(chatPartnerId)
+//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//            guard let dictionary = snapshot.value as? [String: AnyObject] else {
+//                return
+//            }
+//            
+//            self.user.id = chatPartnerId
+//            self.user.setValuesForKeys(dictionary)
+//            DispatchQueue.main.async{
+//                self.performSegue(withIdentifier: "show", sender: self)
+//            }
+//            
+//            
+//        }, withCancel: nil)
+//        
+//    }
     
     var indexuser = Int()
     

@@ -17,6 +17,7 @@ class SingInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.hideKeyboardWhenTappedAround()
         if let user = FIRAuth.auth()?.currentUser{
       
         }
@@ -89,3 +90,4 @@ class SingInViewController: UIViewController {
 
 
 }
+
