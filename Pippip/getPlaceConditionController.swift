@@ -148,17 +148,17 @@ class getPlaceConditionController: UIViewController ,CLLocationManagerDelegate,G
 //    
     func getCondition(){
         if(checkgetCon){
-//            let alert = UIAlertController(title: "ข้อความที่ได้รับ",
-//                                          message: condition.text!,
-//                                          preferredStyle: UIAlertControllerStyle.alert)
-//            
-//            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-//                (result : UIAlertAction) -> Void in
-//                print(self.longitude)
-//            }
-//            alert.addAction(okAction)
-//            
-//            self.present(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "ข้อความที่ได้รับ",
+                                          message: condition.text!,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+                print(self.longitude)
+            }
+            alert.addAction(okAction)
+            
+            self.present(alert, animated: true, completion: nil)
         }
         checkgetCon = false
 

@@ -13,6 +13,7 @@ class ConditionCell: UITableViewCell {
     @IBOutlet weak var textField2: UITextField!
   
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var conBtn: UIButton!
     
     @IBOutlet weak var timePicker: UILabel!
     @IBOutlet weak var addTime: UIButton!

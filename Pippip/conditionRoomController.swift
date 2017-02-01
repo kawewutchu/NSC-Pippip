@@ -43,13 +43,13 @@ class conditionRoomController: UITableViewController {
                     message.setValuesForKeys(dictionary)
                     
                     if let chatPartnerId = message.chatPartnerId() {
-                        self.messagesDictionary[chatPartnerId] = message
-                        
-                        self.messages = Array(self.messagesDictionary.values)
-                        self.messages.sort(by: { (message1, message2) -> Bool in
-                            
-                            return (message1.timestamp?.intValue)! > (message2.timestamp?.intValue)!
-                        })
+//                        self.messagesDictionary[chatPartnerId] = message
+//                        
+//                        self.messages = Array(self.messagesDictionary.values)
+//                        self.messages.sort(by: { (message1, message2) -> Bool in
+//                            
+//                            return (message1.timestamp?.intValue)! > (message2.timestamp?.intValue)!
+//                        })
                     }
                     
                     //this will crash because of background thread, so lets call this on dispatch_async main thread

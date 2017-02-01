@@ -779,7 +779,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addPicture" destination="TmA-Kb-zxy" id="bWK-VJ-rbr"/>
+                                            <outlet property="addPicture" destination="TmA-Kb-zxy" id="VQJ-o2-gx6"/>
                                             <outlet property="timeLabel" destination="4iB-KH-DEU" id="yhT-3U-fvD"/>
                                             <outlet property="timePicker" destination="TMk-Za-LvD" id="8xR-Ex-obF"/>
                                         </connections>
@@ -927,8 +927,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="Eeb-eH-Nd4" id="nfW-Xw-mQk"/>
-                                    <outlet property="delegate" destination="Eeb-eH-Nd4" id="YsY-7V-blP"/>
+                                    <outlet property="dataSource" destination="Eeb-eH-Nd4" id="W3N-P2-xHQ"/>
+                                    <outlet property="delegate" destination="Eeb-eH-Nd4" id="qCo-Vd-GNk"/>
                                 </connections>
                             </tableView>
                         </subviews>
