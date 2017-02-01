@@ -1076,7 +1076,7 @@
             <objects>
                 <navigationController id="QfJ-P5-dx7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="kkH-8r-Z23"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lga-ts-l86">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lga-ts-l86">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1110,7 +1110,7 @@
             <objects>
                 <navigationController id="ksI-fz-DAy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Dnz-aT-X7e"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NiB-np-vxj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NiB-np-vxj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1204,6 +1204,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="J8H-4o-SKw"/>
-        <segue reference="TeH-gU-spq"/>
+        <segue reference="8T8-j7-gp3"/>
     </inferredMetricsTieBreakers>
 </document>

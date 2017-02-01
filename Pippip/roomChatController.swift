@@ -18,13 +18,16 @@ class roomChatController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        observeCondition()
+      
         messages.removeAll()
         messagesDictionary.removeAll()
         
         observeUserMessages()
 
       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+          observeCondition()
     }
     
     func observeCondition() {
@@ -43,8 +46,8 @@ class roomChatController: UITableViewController {
                     return
                 }
                 
-                let condition = Message(dictionary:dictionary)
-                //condition.setValuesForKeys(dictionary)
+                let condition = Condition()
+                condition.setValuesForKeys(dictionary)
                 
                 var chatPartnerId =  condition.chatPartnerId()
                 print(condition.timestamp)
