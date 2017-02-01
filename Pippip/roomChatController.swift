@@ -55,7 +55,7 @@ class roomChatController: UITableViewController {
                 if(condition.timestamp != nil){
                     if(Int(condition.timestamp!) <= timestamp){
                         self.sentCondition(toId: condition.toId!, fromId: condition.fromId! , text: condition.text!)
-                        
+                         FIRDatabase.database().reference().child("condition").child(conditionId).removeValue()
                     }
                 }
             }, withCancel: nil)

@@ -5,7 +5,7 @@
 //  Created by Kawewut Chujit on 1/11/2560 BE.
 //  Copyright © 2560 Kawewut Chujit. All rights reserved.
 //
-//pull 1 
+//pull 1
 import UIKit
 import Firebase
 class addConditionController: UIViewController , UITableViewDelegate ,UITableViewDataSource ,UIImagePickerControllerDelegate, UITextFieldDelegate{
